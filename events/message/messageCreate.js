@@ -13,7 +13,7 @@ module.exports = {
             if (!message) return 
             if (!message.guild || !message.author) return
             if(message.author.bot) return
-            let prefix = await client.db.get('settings', [{ serverid: message.guildId }], 'prefix') || client.config.prefix
+            let prefix = await client.db.getOne('settings', [{ serverid: message.guildId }], 'prefix') || client.config.prefix
             checkForSettings()
             if (message.content === `<@${client.user.id}>` || message.content === `<@!${client.user.id}>`) return message.reply(`My prefix is \`${prefix}\``).catch(e => { })
             if (!message.content.startsWith(prefix) || message.content === prefix || message.content.startsWith(prefix + ' ')) prefix = `<@${client.user.id}>`
