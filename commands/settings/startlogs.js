@@ -17,7 +17,7 @@ module.exports = {
             if(!message.member.permissions.has('MANAGE_GUILD') && !client.config.owners.includes(message.author.id)) return message.reply(`:x: You don't have the permission to use this command.`).catch(e=>{})
             let mention = message.mentions.channels.first()?.id || message.guild.channels.cache.filter(c=>c.type!=='GUILD_VOICE').get(args[0])?.id || message.channelId
             if(!mention) return message.reply("You didn't gave me any valid channel.").catch(e=>{})
-            let currentchannel = await client.db.get('channels', [{serverid: message.guildId}], 'startlogs') || client.config.prefix
+            let currentchannel = await client.db.getOne('channels', [{serverid: message.guildId}], 'startlogs') || client.config.prefix
             if(mention===currentchannel) return message.channel.send(`The channel is exacly the same of the current one.`).catch(e=>{})
             client.db.set('channels', [{serverid: message.guildId}], 'startlogs', mention)
             await message.channel.send(`The new start logs channel is <#${mention}>`).catch(e=>{})
