@@ -24,7 +24,7 @@ Open the file `model.js` in `./structures/database` and edit it with what you wa
 **If you edit the model.js for don't forget to edit the file `structures/checkForData.js` too**
 ![image](https://user-images.githubusercontent.com/71186872/141292515-98310658-1bee-4bed-8992-923254905fde.png)
 In blue its the key (name of the table), in red its the values, you insert in 'settings' a new line with values : 'serverid': 'id of the guild' and 'prefix': '+'
-If you add something in the `model.js` you will need to add it, example : in `model.js` i add :
+If you add something in the `model.js` you will need to add it, example : in `model.js` i add in the 'settings' table :
 ```js
 {
   name: 'support',
